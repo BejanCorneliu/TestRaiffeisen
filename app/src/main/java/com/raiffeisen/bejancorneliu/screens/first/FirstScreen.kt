@@ -10,7 +10,9 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import com.raiffeisen.bejancorneliu.R
+import com.raiffeisen.bejancorneliu.database.tables.Users
 import com.raiffeisen.bejancorneliu.databinding.ActivityMainBinding
 import com.raiffeisen.bejancorneliu.tools.ViewModelFactory
 import com.raiffeisen.bejancorneliu.tools.addNewData
@@ -20,6 +22,10 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
 
 class FirstScreen : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+    fun onUserClick(nUser: Users) {
+       Toast.makeText(this,"apasa",Toast.LENGTH_SHORT).show()
+    }
 
     private lateinit var mViewModel : FirstViewModel
     private lateinit var mBinding : ActivityMainBinding
@@ -47,7 +53,7 @@ class FirstScreen : AppCompatActivity(), NavigationView.OnNavigationItemSelected
                 it?.let {
                     if (it) {
                         mUsers.addNewData(mNewData)
-                        set()
+                        resetLoadingNextPage()
                     }
                 }
             })

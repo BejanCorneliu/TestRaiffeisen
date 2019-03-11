@@ -17,7 +17,7 @@ class FirstScreenAdapter(private var mActivity : FirstScreen,private var mData :
 
         binding = DataBindingUtil.inflate(layoutInflater, R.layout.row_users, parent, false)
 
-        return FirstScreenViewHolder(binding, mActivity, this)
+        return FirstScreenViewHolder(binding, mActivity,this)
     }
 
     override fun getItemCount(): Int {
@@ -28,9 +28,10 @@ class FirstScreenAdapter(private var mActivity : FirstScreen,private var mData :
         holder.bind(mData[position])
     }
 
-    class FirstScreenViewHolder(val binding: ViewDataBinding, private val mFragment : FirstScreen, private val mAdapter: FirstScreenAdapter) : RecyclerView.ViewHolder(binding.root) {
+    class FirstScreenViewHolder(val binding: ViewDataBinding, val mActivity: FirstScreen, private val mAdapter: FirstScreenAdapter) : RecyclerView.ViewHolder(binding.root) {
         fun bind(data: Users) {
             binding.setVariable(BR.adapter, mAdapter)
+            binding.setVariable(BR.activity,mActivity)
             binding.setVariable(BR.data, data)
             binding.executePendingBindings()
         }
