@@ -25,7 +25,7 @@ class Tools{
                     hour = mFormatNumber.format((0..24).random())+":"+mFormatNumber.format((0..59).random()),
                     attachment = Random.nextBoolean(),
                     small_pic_url = it.picture.thumbnail,
-                    big_pic_url = it.picture.large
+                    big_pic_url = ""
                 )
             )
         }

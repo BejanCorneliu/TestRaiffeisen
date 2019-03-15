@@ -7,4 +7,4 @@ class WsDataResults(val name : WsDataName,val dob : WsDataDob, val nat : String,
 
 class WsDataName(val first : String, val last : String)
 class WsDataDob(val age : String)
-class WsDataPicture(val large : String,val thumbnail : String)
+class WsDataPicture(val large : String,val medium : String,val thumbnail : String)

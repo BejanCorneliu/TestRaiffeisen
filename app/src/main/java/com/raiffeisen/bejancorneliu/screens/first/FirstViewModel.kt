@@ -4,15 +4,23 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.content.Context
 import android.os.Handler
+import android.util.Log
 import android.widget.Toast
 import com.raiffeisen.bejancorneliu.database.tables.Users
 import com.raiffeisen.bejancorneliu.screens.first.repository.FirstRepository
+import com.raiffeisen.bejancorneliu.tools.DownloadThread
+
+
 
 class FirstViewModel(mContext: Context) : ViewModel() {
+
+    val downloadThread: DownloadThread = DownloadThread(mContext)
+
 
     // handler used to communicate back into UI from separate thread
     val mHandlerThread = Handler(Handler.Callback {
         if (it.what == mUpdateListCode){
+            Log.d("dsadsadadas","ceva4")
             mAddNewDataFlag.value=false
             mNewData.addAll(it.obj as Collection<Users>)
             mAddNewDataFlag.value=true
@@ -22,6 +30,11 @@ class FirstViewModel(mContext: Context) : ViewModel() {
 
         true
     })
+
+    init {
+        downloadThread.name = "SKODA OCTAVIA"
+        downloadThread.start()
+    }
 
     val mUpdateListCode = 1234
     val mUpdateMessageCode = 5678
@@ -37,6 +50,7 @@ class FirstViewModel(mContext: Context) : ViewModel() {
 
     fun getNextPage() {
         mRepository.getNextPage(mNextPage,this)
+
     }
 
     //afert next page is served

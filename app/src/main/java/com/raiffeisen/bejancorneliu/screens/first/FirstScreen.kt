@@ -2,6 +2,7 @@ package com.raiffeisen.bejancorneliu.screens.first
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.design.widget.NavigationView
@@ -10,10 +11,10 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import com.raiffeisen.bejancorneliu.R
 import com.raiffeisen.bejancorneliu.database.tables.Users
 import com.raiffeisen.bejancorneliu.databinding.ActivityMainBinding
+import com.raiffeisen.bejancorneliu.screens.second.SecondScreen
 import com.raiffeisen.bejancorneliu.tools.ViewModelFactory
 import com.raiffeisen.bejancorneliu.tools.addNewData
 import com.raiffeisen.bejancorneliu.tools.setUsersAdapter
@@ -24,7 +25,7 @@ import kotlinx.android.synthetic.main.content_main.*
 class FirstScreen : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     fun onUserClick(nUser: Users) {
-       Toast.makeText(this,"apasa",Toast.LENGTH_SHORT).show()
+       startActivity(Intent(this,SecondScreen::class.java))
     }
 
     private lateinit var mViewModel : FirstViewModel

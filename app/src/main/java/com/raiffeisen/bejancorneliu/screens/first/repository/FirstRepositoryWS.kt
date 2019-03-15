@@ -4,7 +4,7 @@ import com.raiffeisen.bejancorneliu.retrofit.RetrofitService
 import com.raiffeisen.bejancorneliu.retrofit.model.WsData
 import retrofit2.Response
 
-class FirstRepositoryWS() {
+class FirstRepositoryWS {
 
     private var mUsersWS = RetrofitService().getInstance().interfaces
 
